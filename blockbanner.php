@@ -2,8 +2,8 @@
 /**
  * 2007-2016 PrestaShop
  *
- * Thirty Bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
- * Copyright (C) 2017 Thirty Bees
+ * thirty bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
+ * Copyright (C) 2017 thirty bees
  *
  * NOTICE OF LICENSE
  *
@@ -15,9 +15,9 @@
  * obtain it through the world-wide-web, please send an email
  * to license@thirtybees.com so we can send you a copy immediately.
  *
- * @author    Thirty Bees <modules@thirtybees.com>
+ * @author    thirty bees <modules@thirtybees.com>
  * @author    PrestaShop SA <contact@prestashop.com>
- * @copyright 2017 Thirty Bees
+ * @copyright 2017 thirty bees
  * @copyright 2007-2016 PrestaShop SA
  * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  * PrestaShop is an internationally registered trademark & property of PrestaShop SA
@@ -34,11 +34,14 @@ if (!defined('_TB_VERSION_')) {
  */
 class BlockBanner extends Module
 {
+    /**
+     * BlockBanner constructor.
+     */
     public function __construct()
     {
         $this->name = 'blockbanner';
         $this->tab = 'front_office_features';
-        $this->version = '2.0.0';
+        $this->version = '2.0.1';
         $this->author = 'thirty bees';
         $this->need_instance = 0;
 
@@ -67,38 +70,9 @@ class BlockBanner extends Module
     }
 
     /**
-     * @return bool
-     *
-     * @since 1.0.0
-     */
-    protected function installFixtures()
-    {
-        $languages = Language::getLanguages(false);
-        foreach ($languages as $lang) {
-            $this->installFixture((int) $lang['id_lang'], 'sale70.png');
-        }
-
-        return true;
-    }
-
-    /**
-     * @param int         $idLang
-     * @param string|null $image
-     *
-     * @since 1.0.0
-     */
-    protected function installFixture($idLang, $image = null)
-    {
-        $values['BLOCKBANNER_IMG'][(int) $idLang] = $image;
-        $values['BLOCKBANNER_LINK'][(int) $idLang] = '';
-        $values['BLOCKBANNER_DESC'][(int) $idLang] = '';
-        Configuration::updateValue('BLOCKBANNER_IMG', $values['BLOCKBANNER_IMG']);
-        Configuration::updateValue('BLOCKBANNER_LINK', $values['BLOCKBANNER_LINK']);
-        Configuration::updateValue('BLOCKBANNER_DESC', $values['BLOCKBANNER_DESC']);
-    }
-
-    /**
      * @param array $params
+     *
+     * @return bool
      */
     public function hookActionObjectLanguageAddAfter($params)
     {
@@ -122,25 +96,21 @@ class BlockBanner extends Module
     }
 
     /**
-     * @param array $params
-     *
      * @return string
      *
      * @since 1.0.0
      */
-    public function hookDisplayBanner($params)
+    public function hookDisplayBanner()
     {
-        return $this->hookDisplayTop($params);
+        return $this->hookDisplayTop();
     }
 
     /**
-     * @param array $params
-     *
      * @return string
      *
      * @since 1.0.0
      */
-    public function hookDisplayTop($params)
+    public function hookDisplayTop()
     {
         if (!$this->isCached('blockbanner.tpl', $this->getCacheId())) {
             $imgname = Configuration::get('BLOCKBANNER_IMG', $this->context->language->id);
@@ -161,23 +131,19 @@ class BlockBanner extends Module
     }
 
     /**
-     * @param $params
-     *
      * @return string
      *
      * @since 1.0.0
      */
-    public function hookDisplayFooter($params)
+    public function hookDisplayFooter()
     {
-        return $this->hookDisplayTop($params);
+        return $this->hookDisplayTop();
     }
 
     /**
-     * @param $params
-     *
      * @since 1.0.0
      */
-    public function hookDisplayHeader($params)
+    public function hookDisplayHeader()
     {
         $this->context->controller->addCSS($this->_path.'blockbanner.css', 'all');
     }
@@ -328,5 +294,36 @@ class BlockBanner extends Module
         }
 
         return $fields;
+    }
+
+    /**
+     * @return bool
+     *
+     * @since 1.0.0
+     */
+    protected function installFixtures()
+    {
+        $languages = Language::getLanguages(false);
+        foreach ($languages as $lang) {
+            $this->installFixture((int) $lang['id_lang'], 'sale70.png');
+        }
+
+        return true;
+    }
+
+    /**
+     * @param int         $idLang
+     * @param string|null $image
+     *
+     * @since 1.0.0
+     */
+    protected function installFixture($idLang, $image = null)
+    {
+        $values['BLOCKBANNER_IMG'][(int) $idLang] = $image;
+        $values['BLOCKBANNER_LINK'][(int) $idLang] = '';
+        $values['BLOCKBANNER_DESC'][(int) $idLang] = '';
+        Configuration::updateValue('BLOCKBANNER_IMG', $values['BLOCKBANNER_IMG']);
+        Configuration::updateValue('BLOCKBANNER_LINK', $values['BLOCKBANNER_LINK']);
+        Configuration::updateValue('BLOCKBANNER_DESC', $values['BLOCKBANNER_DESC']);
     }
 }
