@@ -1,0 +1,14 @@
+module_name: Banner Block
+compatible_versions: 1.0.0+
+author: thirty bees
+category: front office
+tags:
+  - advertising
+  - banner
+  - images
+short_description: The banner block allows you add a banner to the top of your site for advertising purposes.
+description: description.md
+images:
+  - image-1.png
+  - image-2.png
+license: MIT
