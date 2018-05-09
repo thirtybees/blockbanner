@@ -1,1 +1,7 @@
-*blockbanner*.zip
+
+/translations/*
+!/translations/index.php
+
+/config*.xml
+
+blockbanner-*.zip
