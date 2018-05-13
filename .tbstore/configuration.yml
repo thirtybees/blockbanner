@@ -11,5 +11,5 @@ description_short: The banner block allows you add a banner to the top of your s
 description: description.md
 images:
   - image-1.png
-gdpr_compatible: true
+gdpr_compliant: true
 license: MIT
