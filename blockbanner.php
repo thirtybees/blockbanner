@@ -52,7 +52,7 @@ class BlockBanner extends Module
         $this->bootstrap = true;
         parent::__construct();
 
-        $this->displayName = $this->l('Banner block');
+        $this->displayName = $this->l('Block Banner');
         $this->description = $this->l('Displays a banner at the top of the shop.');
         $this->ps_versions_compliancy = ['min' => '1.6', 'max' => '1.6.99.99'];
     }
