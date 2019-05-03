@@ -55,6 +55,7 @@ class BlockBanner extends Module
         $this->displayName = $this->l('Block Banner');
         $this->description = $this->l('Displays a banner at the top of the shop.');
         $this->tb_versions_compliancy = '> 1.0.0';
+        $this->tb_min_version = '1.0.0';
         $this->ps_versions_compliancy = ['min' => '1.6', 'max' => '1.6.99.99'];
     }
 
