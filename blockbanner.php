@@ -77,7 +77,6 @@ class BlockBanner extends Module
         $this->registerHook('actionObjectLanguageAddAfter');
 
         $this->installFixtures();
-        $this->disableDevice(Context::DEVICE_MOBILE);
 
         return true;
     }
