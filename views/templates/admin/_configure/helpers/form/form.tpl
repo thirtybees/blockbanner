@@ -71,7 +71,7 @@
           <div class="form-group">
             {if isset($fields_value[$input.name][$language.id_lang]) && $fields_value[$input.name][$language.id_lang] != ''}
               <div id="{$input.name|escape:'htmlall':'UTF-8'}-{$language.id_lang|intval}-images-thumbnails" class="col-lg-12">
-                <img src="{$uri|escape:'htmlall':'UTF-8'}img/{$fields_value[$input.name][$language.id_lang]|escape:'htmlall':'UTF-8'}" class="img-thumbnail"/>
+                <img src="{$imageUrl|escape:'htmlall':'UTF-8'}{$fields_value[$input.name][$language.id_lang]|escape:'htmlall':'UTF-8'}" class="img-thumbnail"/>
               </div>
             {/if}
           </div>
