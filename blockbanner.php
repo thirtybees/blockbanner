@@ -47,7 +47,7 @@ class BlockBanner extends Module
     {
         $this->name = 'blockbanner';
         $this->tab = 'front_office_features';
-        $this->version = '2.0.3';
+        $this->version = '2.1.0';
         $this->author = 'thirty bees';
         $this->need_instance = 0;
 
